@@ -3,72 +3,23 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
-msft = yf.Ticker("AMZN")
+from bs4 import BeautifulSoup as bs
 
-# get stock info
-msft.info
+f = 'D:\HTML_STUDY\sololearn.html'
 
-# get historical market data
-hist = msft.history(period="max")
+with open(f,'r') as html_file:
+    content = html_file.read()
+    #print(content)
 
-print('History: ',hist)
-# show actions (dividends, splits)
-msft.actions
+    soup = bs(content,'lxml')
+    #print(soup.prettify())
+    tags = soup.find_all('h1')
+    #for i in tags:
+        #print(i.text)
 
-# show dividends
-msft.dividends
-print("Dividents: ",msft.dividends)
-# show splits
-msft.splits
-print("Splits: ",msft.splits)
 
-# show financials
-msft.financials
-print("Financials: ",msft.financials)
-msft.quarterly_financials
-print("Quaterly Financials: ",msft.quarterly_financials)
+    sections = soup.find_all('div',class_ = 'section')
+    for i in sections:
+        print(i.h1)
+        #print(i.h1.text)
 
-# show major holders
-msft.major_holders
-
-# show institutional holders
-msft.institutional_holders
-
-# show balance sheet
-msft.balance_sheet
-msft.quarterly_balance_sheet
-
-# show cashflow
-msft.cashflow
-msft.quarterly_cashflow
-
-# show earnings
-msft.earnings
-msft.quarterly_earnings
-
-# show sustainability
-msft.sustainability
-
-# show analysts recommendations
-msft.recommendations
-
-# show next event (earnings, etc)
-msft.calendar
-
-# show all earnings dates
-msft.earnings_dates
-
-# show ISIN code - *experimental*
-# ISIN = International Securities Identification Number
-msft.isin
-
-# show options expirations
-msft.options
-
-# show news
-msft.news
-
-# get option chain for specific expiration
-opt = msft.option_chain('YYYY-MM-DD')
-print(opt)
-# data available via: opt.calls, opt.puts
