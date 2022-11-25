@@ -1,0 +1,1 @@
+Primary objective: To design and develop a Data Acquisition and Preprocessing Pipeline.
