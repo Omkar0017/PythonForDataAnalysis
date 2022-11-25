@@ -9,7 +9,7 @@ class ScrapFlipkart:
         pass
 
     def __str__(self) -> str:
-        print("Web scrapping www.croma.com for iPhone")
+        print("Web scrapping www.Flipkart.com for iPhone")
 
 
     def __removeTag(str):
