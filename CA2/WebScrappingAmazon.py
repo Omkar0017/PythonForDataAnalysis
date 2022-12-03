@@ -42,7 +42,7 @@ class ScrapAmazon:
 
             for i in price:
                 val = self.__removeBrac(str(i))
-                priceList.append(val)
+                priceList.append(int(val.replace(',', '')))
 
             for i in rating:
                 val = self.__removeBrac(str(i))
@@ -50,5 +50,8 @@ class ScrapAmazon:
 
 
         df = pd.DataFrame(list(zip(productList, priceList,ratingLst)),
-               columns =['Product Name','Price','Rating'])
+               columns =['productList','Price','Rating'])
+
+
+        return df
 

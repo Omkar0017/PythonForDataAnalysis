@@ -44,10 +44,11 @@ class ScrapCroma:
             resp=requests.get(url.format(j),headers=headers)
             #print(resp.status_code)
             #print(len(resp.content))
-            c= resp.content.decode('utf-8',errors='replace')
+            #c= resp.content.decode('utf-8',errors='replace')
             #print(len(c))
-            content=c.replace('\u20b9','R')
-            d=json.loads(content)
+            #content=c.replace('\u20b9','')
+            #d=json.loads(content)
+            d = json.loads(resp.content)
 
 
             for i in d['products']:
@@ -61,12 +62,12 @@ class ScrapCroma:
                 except KeyError:
                     product.append('0')
                 try:
-                    price.append(i['mrp']['formattedValue'])
+                    price.append(int(i['mrp']['value']))
                 except:
                     price.append(0)
 
 
         df = pd.DataFrame(list(zip(product, price,ratings)),
-                columns =['Product Name','Price','Rating'])
+                columns =['productList','Price','Rating'])
         
         return df

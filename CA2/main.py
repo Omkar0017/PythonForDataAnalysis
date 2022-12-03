@@ -3,10 +3,7 @@ from WebScrappingCroma import ScrapCroma
 from WebScrappingFlipkart import ScrapFlipkart
 import time
 
-#sys.stdin.reconfigure(encoding='utf-8')
-#sys.stdout.reconfigure(encoding='utf-8')
-#set PYTHONIOENCODING=utf-8
-#set PYTHONLEGACYWINDOWSSTDIO=utf-8
+
 
 Fp = ScrapFlipkart()
 Az = ScrapAmazon()
@@ -20,17 +17,31 @@ df3 = Cr.get_data()
 print('**********************************')
 print("Flipkart")
 print(df1.size)
-print(df1.head())
+#print(df1.head())
+#print(df1.info())
 print('**********************************')
 print('Amazon')
 print(df2.size)
-print(df2.head())
+#print(df2.head())
+#print(df2.info())
+
 print('**********************************')
 print('Croma')
+
 print(df3.size)
-#input("test:")
-time.sleep(1)
-print(df3.dtypes)
-df3['Price'].str.replace(r'/[^ .0-9]/',' ')
-print('-')
-print(df3.head())
+#print(df3.head())
+#print(df3.info())
+#s = int(input("Please Select Which iPhone you would like to select \n 1: iPhone 12 \n 2: iPhone 13 \n 3: iPhone 14"))
+s = 2
+if s == 1:
+    name = 'Apple\iPhone\12'
+elif s ==2:
+    name = 'Apple\iPhone\13'
+elif s == 3:
+    name = 'Apple\iPhone\14'
+else:
+    print("Invalid input")
+
+print(df1.info())   
+fkDf = df1.query('productList.str.contains({0})'.format(name))
+print(fkDf.head())

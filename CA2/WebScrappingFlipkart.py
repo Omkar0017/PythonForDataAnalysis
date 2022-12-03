@@ -1,6 +1,8 @@
 from bs4 import BeautifulSoup as soup
 from urllib.request import urlopen as uReq
+import urllib
 import pandas as pd
+
 
 
 class ScrapFlipkart:
@@ -12,8 +14,17 @@ class ScrapFlipkart:
         print("Web scrapping www.Flipkart.com for iPhone")
 
 
-    def __removeTag(str):
-        return str.split('>')[1].split('<')[0]
+    def __removeTag(self,a):
+        b = a.split('>')[1].split('<')[0]
+        #b = b.replace('\u20b9','')
+        b = b.replace('\xe2\x82\xb9',' ')
+        return b
+
+    def __removeTagPrice(self,a):
+        b = a.split('>')[1].split('<')[0]
+        #b = b.replace('\u20b9','')
+        b = b.replace('\xe2\x82\xb9',' ')
+        return b
     
     def __dataFetch(self,myUrl):
 
@@ -22,11 +33,14 @@ class ScrapFlipkart:
         ratingLst=[]
 
         uClient = uReq(myUrl)
-        page_html1 = uClient.read()
+        #uClient.add_header('Accept-Encoding', 'utf-8')
+        """page_html1 = uClient.read()
     
         page_html = str(page_html1)
-        uClient.close()
-        pageSoup = soup(page_html,'lxml')
+        uClient.close()"""
+
+
+        pageSoup = soup(uClient.read().decode('utf-8', 'ignore'),'html.parser')
 
         containers = pageSoup.findAll("div",{"class":"_2kHMtA"})
 
@@ -38,7 +52,8 @@ class ScrapFlipkart:
         #priceList.append(str_price)
         #productList.append(str_product)
         #ratingLst.append(float(str_rating))
-            priceList.append(self.__removeTag(str_price))
+            #priceList.append(self.__removeTag(str_price))
+            priceList.append(int(self.__removeTag(str_price)[1:].replace(',', '')))
             productList.append(self.__removeTag(str_product))
             ratingLst.append(float(self.__removeTag(str_rating)))
 
@@ -66,7 +81,7 @@ class ScrapFlipkart:
 
 
         finalDf = pd.concat(myLst) 
-        finalDf.columns = ['Product Name','Price','Rating']
+        finalDf.columns = ['productList','Price','Rating']
 
         return finalDf
 
