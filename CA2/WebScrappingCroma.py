@@ -6,8 +6,9 @@ import pandas as pd
 
 
 class ScrapCroma:
-    def __init__(self,product):
-        self.product = product
+    def __init__(self):
+        #self.product = product
+        pass
 
 
     def __str__(self) -> str:
@@ -42,7 +43,12 @@ class ScrapCroma:
         for j in range(0,4):
             resp=requests.get(url.format(j),headers=headers)
             #print(resp.status_code)
-            d=json.loads(resp.content)
+            #print(len(resp.content))
+            #c= resp.content.decode('utf-8',errors='replace')
+            #print(len(c))
+            #content=c.replace('\u20b9','')
+            #d=json.loads(content)
+            d = json.loads(resp.content)
 
 
             for i in d['products']:
@@ -50,18 +56,18 @@ class ScrapCroma:
                 try:
                     ratings.append(i['averageRating'])
                 except KeyError: 
-                    ratings.append('0')
+                    ratings.append(0)
                 try:
                     product.append(i['name'])
                 except KeyError:
                     product.append('0')
                 try:
-                    price.append(i['mrp']['formattedValue'])
+                    price.append(int(i['mrp']['value']))
                 except:
-                    price.append('0')
+                    price.append(0)
 
 
         df = pd.DataFrame(list(zip(product, price,ratings)),
-                columns =['Product Name','Price','Rating'])
+                columns =['productList','Price','Rating'])
         
         return df
