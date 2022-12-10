@@ -2,11 +2,13 @@
 import requests
 import json
 import pandas as pd
+import logging as log
 
 
 
 class ScrapCroma:
     def __init__(self):
+        log.warning('<-----------------ScrapCroma Object Created ------------------->')
         #self.product = product
         pass
 
@@ -16,6 +18,8 @@ class ScrapCroma:
         
 
     def get_data(self):
+        log.warning('<-----------------Inside ScrapCroma get_data ------------------->')
+
         headers={"authority": "api.croma.com",
                 "method": "GET",
                 "path": "/product/allchannels/v1/search?currentPage=0&query=iphone%3Arelevance%3AZAStatusFlag%3Atrue%3AexcludeOOSFlag&fields=FULL",

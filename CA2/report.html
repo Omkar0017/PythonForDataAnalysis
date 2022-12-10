@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>CA 2 Report</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    
+    
+</head>
+<body style="background-color:rgb(149, 164, 190)">
+<tr align="center">
+
+    <h1 style ='color:black' align="center"> <b>   B9AI108 Programming for Data Analysis CA 2 </b></h1>
+
+</tr>
+
+<tr>
+    <h3 style ='color:black' align="center">  Primary objective: To design and develop a Data Acquisition and Preprocessing Pipeline. </h3>
+</tr>
+
+<th align="center">
+    <p>    
+        Data Aquisition pipeline is used to collect a data from certain point and then apply preprocessing to it to get valuable information from it. There are various techniques for data gathering like API, web Scrapping, Database Extraction. In this Assignment web scrapping is used for data extraction; web scrapping along with json and beautifulSoup is used.
+    </p> 
+
+    <p>
+        In this Assignment data is Scrapped from 3 websites for collection of iPhone price along with their rating. Initially the user is asked to select the website from which data needs to be extracted. After selection of website depending on the website data is extracted I.e., for Flipart.com and Amazon.in whole html page is downloaded and passed through beautifulSoup and this data is filtered to select only required data. This data is converted into pandas data-frame and using matplotlib graph is plotted. For croma.com instead of using beautifulSoup json is used to collect the data. After filtering the required data, same process is followed for data visualization. 
+    </p>
+</th>
+
+    <p>
+        <strong>  Below are few images to show the result</strong>
+    </p>
+
+    <section align="center">
+<th align="center">
+    <tr align="center">
+        <img src="UI.png" width="700" 
+        height="500"  alt="Image of UI">
+
+    </tr>
+</th>
+<br>
+    <tr> <strong> This is a image of User selecting the website</strong></tr>
+<br>
+<th>
+    <tr align="center">
+            <img src="Flipkart.png" width="700" 
+            height="500"  alt="Graph of data from Flipkart">
+        
+    </tr>
+</th>
+<br>
+<tr> <strong> This is a image of Flipart graph</strong></tr>
+<br>
+<th>
+    <tr align="center">
+        <img src="Croma.png" width="700" 
+        height="500"  alt="Graph of data from Croma">
+    
+    </tr>
+</th>
+<tr> <strong> This is a image of Croma graph</strong></tr>
+<br>
+</section>
+</body>
+</html>
