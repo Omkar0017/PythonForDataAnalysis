@@ -2,12 +2,15 @@ from bs4 import BeautifulSoup as soup
 from urllib.request import urlopen as uReq
 import urllib
 import pandas as pd
+import logging as log
 
 
 
 class ScrapFlipkart:
 
     def __init__(self) -> None:
+        log.warning('<-----------------ScrapFlipkart Object Created ------------------->')
+
         pass
 
     def __str__(self) -> str:
@@ -68,6 +71,9 @@ class ScrapFlipkart:
 
 
     def get_data(self):
+
+        log.warning('<-----------------Inside ScrapFlipkart get_data ------------------->')
+    
         Urls = 'https://www.flipkart.com/search?q=iphone&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page={0}'
 
 

@@ -1,11 +1,13 @@
 from bs4 import BeautifulSoup as soup
 from urllib.request import urlopen as uReq
 import pandas as pd
+import logging as log
 
 class ScrapAmazon:
 
     def __init__(self) -> None:
-        
+        log.warning('<-----------------ScrapAmazon Object Created ------------------->')
+
         pass
 
     def __str__(self) -> str:
@@ -20,6 +22,8 @@ class ScrapAmazon:
         return str.split('>')[1].split('<')[0]
     
     def getData(self):
+        log.warning('<-----------------Inside ScrapAmazon getData ------------------->')
+
         priceList=[]
         productList=[]
         ratingLst=[]
