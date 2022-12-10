@@ -43,7 +43,11 @@ data and return the dataframe consisting of productName, producPrice, rating. Us
  
  
 
-    In this file ScrapAmazon class is defined which is used to scrap the amazon.in website. In this class getData() method is public method that is called to get the data in pandas Dataframe format. In this method static url is defined with some dynamic parts like page number. A for loop is used to that decides the page number and sends the request to server. The received data is converted into BeautifulSoup object and required data is extracted by using proper filters on html tags. This data is passed to another private function to remove the html tags and the appended into a list. After completion of loop this list is converted into a dataFrame and then returned. 
+    In this file ScrapAmazon class is defined which is used to scrap the amazon.in website. In this class getData() method is public method 
+    that is called to get the data in pandas Dataframe format. In this method static url is defined with some dynamic parts like page number.
+     A for loop is used to that decides the page number and sends the request to server. The received data is converted into BeautifulSoup 
+     object and required data is extracted by using proper filters on html tags. This data is passed to another private function to remove the
+      html tags and the appended into a list. After completion of loop this list is converted into a dataFrame and then returned. 
 
  
  
@@ -54,7 +58,10 @@ data and return the dataframe consisting of productName, producPrice, rating. Us
  
  
 
-    In this file ScrapFlipkart class is defined which is used to scrap Flipkart.com. Just like ScrapAmazon the process in this class is almost identical with changes in url and html tag filters. But in this class there is another method that fetches the data and cleans in and then returns the list. This private method is called in getData() method inside the loop. Also while reading the data the 'utf-8' format is used and rupee symbol is removed so that the price can be converted into integer. Rest all process is same as mentioned above. 
+    In this file ScrapFlipkart class is defined which is used to scrap Flipkart.com. Just like ScrapAmazon the process in this class is almost
+     identical with changes in url and html tag filters. But in this class there is another method that fetches the data and cleans in and then
+      returns the list. This private method is called in getData() method inside the loop. Also while reading the data the 'utf-8' format is
+       used and rupee symbol is removed so that the price can be converted into integer. Rest all process is same as mentioned above. 
 
  
  
@@ -64,7 +71,12 @@ data and return the dataframe consisting of productName, producPrice, rating. Us
  
  
 
-    In this file ScrapCroma class is defined which is used to scrap croma.com. In this file instead of using beautifulSoup json format is used to get the data. Just like other class getData() method is accessible to all which returns the data in pandas DataFrame type. A header is defined as per the website specification and, static url with dynamic page number is defined. Inside the for loop page number is decided and request is sent to the server and returned data is loaded into json object. From the json only required fields are extracted and unlike beautifulSoup the html tags are not present in them so there is no need to preprocess the data. This extracted data is appended into lists and after completion of the loop lists are converted into pandas DataFrame which is returned by the method. 
+    In this file ScrapCroma class is defined which is used to scrap croma.com. In this file instead of using beautifulSoup json format is used
+     to get the data. Just like other class getData() method is accessible to all which returns the data in pandas DataFrame type. A header is
+     defined as per the website specification and, static url with dynamic page number is defined. Inside the for loop page number is decided
+     and request is sent to the server and returned data is loaded into json object. From the json only required fields are extracted and
+     unlike beautifulSoup the html tags are not present in them so there is no need to preprocess the data. This extracted data is appended
+      into lists and after completion of the loop lists are converted into pandas DataFrame which is returned by the method. 
 
  
 
@@ -75,7 +87,7 @@ data and return the dataframe consisting of productName, producPrice, rating. Us
 
 
 
-![Graph of Croma.in](Croma.png")
+![Graph of Croma.in](Croma.png)
 
 
 ![Graph of Flipkart.com](Flipkart.png)
